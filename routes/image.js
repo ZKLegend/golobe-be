@@ -21,9 +21,7 @@ const imageFilter = function (req, file, cb) {
   cb(null, true);
 };
 
-const upload = multer({ storage: storage, fileFilter: imageFilter }).array(
-  "uploadedImages"
-);
+const upload = multer({ storage: storage, fileFilter: imageFilter });
 
 router.post("/", upload.single("imageSrc"), async (req, res, next) => {
   if (req.fileValidationError) {
